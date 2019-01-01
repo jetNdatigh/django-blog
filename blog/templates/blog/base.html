@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit-no" >
+		<link rel = "stylesheet" type = "text/css" href = "{% static 'css/bootstrap.min.css' %} " >
+		<link rel = "stylesheet" type = "text/css" href = "{% static 'css/main.css' %} " >
+		{% if title %}
+			<title>{{ title }} Page</title>
+		{% else %}
+			<title>Blog Home </title>
+		{% endif %}
+	</head>
+	<body>
+		<header class="site-header">
+			<nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+				<div class="container">
+					<a class="navbar-brand mr-4" href="/">Django Blog</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse">
+					<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarToggle">
+						<div class="navbar-nav mr-auto">
+							<a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+							<a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+						</div>
+						<div class="navbar-nav">
+						<!---Navbar Right Side--->
+						{% if user.is_authenticated %}
+							<a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+							<a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+							<a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+						{% else %}
+							<a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+							<a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+						{% endif %}
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main role="main" class="container">
+			<div class="row">
+				<div class="col-md-8">
+					{% if messages %}
+						{% for message in messages %}
+							<div class="alert alert-{{ message.tags }}">
+								{{ message }}
+							</div>
+						{% endfor %}
+					{% endif %}
+					{% block content %}
+					{% endblock content %}
+				</div>
+				<div class="col-md-4">
+					<div class="content-section">
+						<h3>Our Sidebar</h3>
+						<p class="text-muted">We can put anything we like here!</p>
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-light">Latest posts</li>
+							<li class="list-group-item list-group-item-light">Announcements</li>
+							<li class="list-group-item list-group-item-light">Latest posts, again</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+	</body>
+</html>
