@@ -46,6 +46,6 @@ a simple blog I created to learn the the basic concepts of the Django framework.
   - pagination
   
  ## Built with
- - [Sublime Text](https://www.sublimetext.com) - text edito
+ - [Sublime Text](https://www.sublimetext.com) - text editor
  - [Django](https://www.djangoproject.com) - web framework
  - [Pillow](https://pillow.readthedocs.io/en/5.3.x/) - Python imaging library
