@@ -2,6 +2,13 @@
 
 a simple blog I created to learn the the basic concepts of the Django framework.
 
+## How To Install
+1. Install Python and pip
+2. Run 'pip install django' in command line
+3. Within the project directory, run 'python manage.py makemigrations' and 'python manage.py migrate'
+4. Create Super User with 'python manage.py createsuperuser' and enter superuser account details
+5. Run 'python manage.py runserver' to get the server up and running
+
 ## Things I learnt 
 ### 1. URL configurations
   - passing primary keys and other variables to url routes
